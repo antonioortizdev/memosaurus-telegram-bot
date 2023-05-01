@@ -1,8 +1,7 @@
 import logging
-import os
+import configuration
 from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, MessageHandler
-from dotenv import load_dotenv
 
 
 def log(msg: str) -> None:
@@ -24,8 +23,7 @@ async def reply_to_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 if __name__ == '__main__':
-    load_dotenv()
-    TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+    TELEGRAM_BOT_TOKEN = configuration.get('TELEGRAM_BOT_TOKEN')
 
     logging.basicConfig(
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
